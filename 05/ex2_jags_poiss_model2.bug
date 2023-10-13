@@ -1,0 +1,14 @@
+
+    model {
+        # data likelihood
+        for (i in 1:length(X)) {
+            X[i] ~ dpois(lambda);
+        }
+
+        # (approximately) Jeffrey's prior for lambda
+        lambda ~ dgamma(0.5, 0.00001)
+
+        # Predicted data , given lambda
+        Y ~ dpois(lambda);
+    }
+
